@@ -37,7 +37,7 @@
   letter-spacing: 0.03em;
 }
 
-.srch-btn:hover, 
+.srch-btn:hover,
 .srch-btn:focus {
   background: rgb(108, 140, 255);
 }
@@ -67,3 +67,26 @@
   line-height: 24px;
   letter-spacing: 0.03em;
 }
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; /* Відступи між зображеннями */
+}
+
+.gallery-container .gallery-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 360px;
+  height: 200px;
+}
+
