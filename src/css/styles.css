@@ -15,3 +15,55 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+#search-form {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  margin-bottom: 32px;
+}
+
+.srch-btn {
+  width: 91px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgb(78, 117, 255);
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.03em;
+}
+
+.srch-btn:hover, 
+.srch-btn:focus {
+  background: rgb(108, 140, 255);
+}
+
+.srchForm {
+  width: 272px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid rgb(128, 128, 128);
+  border-radius: 4px;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.03em;
+  padding: 8px 16px;
+}
+
+.srchForm:hover {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.srchForm::placeholder {
+  color: rgb(128, 128, 128);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.03em;
+}
