@@ -1,28 +1,31 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 export function renderGallery(images) {
-  const galleryElement = document.getElementById('gallery');
+  const galleryElement = document.querySelector('.gallery');
   galleryElement.innerHTML = '';
 
   images.forEach(image => {
     const cardHTML = `
-      <div class="gallery">
-        <a href="${image.largeImageURL}"><img src="${image.webformatURL}" alt="${image.tags}" class="card-img-top"></a>
+      <li class="gallery-container">
+        <a href="${image.largeImageURL}">
+          <img src="${image.webformatURL}" alt="${image.tags}" class="card-img-top">
+        </a>
         <div class="card-body">
-          <p class="card-text">Likes: ${image.likes}</p>
-          <p class="card-text">Views: ${image.views}</p>
-          <p class="card-text">Comments: ${image.comments}</p>
-          <p class="card-text">Downloads: ${image.downloads}</p>
+          <p class="card-text"><span>Likes:</span> ${image.likes}</p>
+          <p class="card-text"><span>Views:</span> ${image.views}</p>
+          <p class="card-text"><span>Comments:</span> ${image.comments}</p>
+          <p class="card-text"><span>Downloads:</span> ${image.downloads}</p>
         </div>
-      </div>
+      </li>
     `;
     galleryElement.insertAdjacentHTML('beforeend', cardHTML);
   });
-    
-    new SimpleLightbox('.gallery');
+  const lightbox = new SimpleLightbox('.gallery');
+  lightbox.refresh();
 }
 
 export function showError(message) {

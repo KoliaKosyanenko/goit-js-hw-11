@@ -68,10 +68,19 @@
   letter-spacing: 0.03em;
 }
 
+.gallery {
+  display: flex;
+  gap: 24px;
+  justify-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
 .gallery-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px; /* Відступи між зображеннями */
+  box-sizing: border-box;
+  border: 1px solid rgb(128, 128, 128);
+  max-width: 360px;
 }
 
 .gallery-container .gallery-image {
@@ -83,10 +92,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 4px 20px;
+  text-align: center;
+}
+
+.card-text > span {
+  color: rgb(46, 47, 66);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.07em;
+}
+
+.card-text {
+  color: rgb(46, 47, 66);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.07em;
 }
 
 img {
   width: 360px;
   height: 200px;
+  object-fit: cover;
 }
-
