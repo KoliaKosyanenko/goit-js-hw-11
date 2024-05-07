@@ -11,7 +11,7 @@ export function renderGallery(images) {
   images.forEach(image => {
     const cardHTML = `
       <li class="gallery-container">
-        <a href="${image.largeImageURL}">
+        <a href="${image.largeImageURL}" title="${image.tags}">
           <img src="${image.webformatURL}" alt="${image.tags}" class="card-img-top">
         </a>
         <div class="card-body">
@@ -24,9 +24,25 @@ export function renderGallery(images) {
     `;
     galleryElement.insertAdjacentHTML('beforeend', cardHTML);
   });
-  const lightbox = new SimpleLightbox('.gallery');
-  lightbox.refresh();
+  const lightbox = new SimpleLightbox('.gallery a');
+    lightbox.refresh();
+    hideLoading();
 }
+
+export function showLoading() {
+  const loader = document.querySelector('.loader');
+  loader.style.display = 'block';
+}
+
+export function hideLoading() {
+  const loader = document.querySelector('.loader');
+  loader.style.display = 'none';
+}
+
+const searchForm = document.getElementById('search-form');
+searchForm.addEventListener('submit', () => {
+  showLoading();
+});
 
 export function showError(message) {
   iziToast.error({
