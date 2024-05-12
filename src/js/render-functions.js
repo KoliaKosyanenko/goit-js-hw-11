@@ -9,19 +9,37 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
+function getGalleryElement() {
+  return document.querySelector('.gallery');
+}
+
+function getLoaderElement() {
+  return document.querySelector('.loader');
+}
+
 export function renderGallery(images) {
-  const galleryElement = document.querySelector('.gallery');
+  const galleryElement = getGalleryElement();
   const cardsHtml = images.map(image => {
+    const {
+      largeImageURL,
+      webformatURL,
+      tags,
+      likes,
+      views,
+      comments,
+      downloads,
+    } = image;
+      
     const cardHTML = `
       <li class="gallery-container">
-        <a href="${image.largeImageURL}" title="${image.tags}">
-          <img src="${image.webformatURL}" alt="${image.tags}" class="card-img-top">
+        <a href="${largeImageURL}" title="${tags}">
+          <img src="${webformatURL}" alt="${tags}" class="card-img-top">
         </a>
         <div class="card-body">
-          <p class="card-text"><span>Likes:</span> ${image.likes}</p>
-          <p class="card-text"><span>Views:</span> ${image.views}</p>
-          <p class="card-text"><span>Comments:</span> ${image.comments}</p>
-          <p class="card-text"><span>Downloads:</span> ${image.downloads}</p>
+          <p class="card-text"><span>Likes:</span> ${likes}</p>
+          <p class="card-text"><span>Views:</span> ${views}</p>
+          <p class="card-text"><span>Comments:</span> ${comments}</p>
+          <p class="card-text"><span>Downloads:</span> ${downloads}</p>
         </div>
       </li>
     `;
@@ -32,17 +50,17 @@ export function renderGallery(images) {
 }
 
 export function clearGallery() {
-  const galleryElement = document.querySelector('.gallery');
+  const galleryElement = getGalleryElement();
   galleryElement.innerHTML = '';
 }
 
 export function showLoading() {
-  const loader = document.querySelector('.loader');
+  const loader = getLoaderElement();
   loader.style.display = 'block';
 }
 
 export function hideLoading() {
-  const loader = document.querySelector('.loader');
+  const loader = getLoaderElement();
   loader.style.display = 'none';
 }
 
