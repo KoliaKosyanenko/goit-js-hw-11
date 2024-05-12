@@ -5,13 +5,14 @@ import {
   renderGallery,
   showLoading,
   hideLoading,
+  clearGallery,
 } from './js/render-functions.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   const searchForm = document.getElementById('search-form');
   searchForm.addEventListener('submit', function (event) {
     event.preventDefault();
-
+    clearGallery();
     const searchInput = document.getElementById('search-input');
     const query = searchInput.value.trim();
 

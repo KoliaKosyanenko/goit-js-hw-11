@@ -4,11 +4,14 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
 export function renderGallery(images) {
   const galleryElement = document.querySelector('.gallery');
-  galleryElement.innerHTML = '';
-
-  images.forEach(image => {
+  const cardsHtml = images.map(image => {
     const cardHTML = `
       <li class="gallery-container">
         <a href="${image.largeImageURL}" title="${image.tags}">
@@ -22,11 +25,15 @@ export function renderGallery(images) {
         </div>
       </li>
     `;
-    galleryElement.insertAdjacentHTML('beforeend', cardHTML);
+    return cardHTML;
   });
-  const lightbox = new SimpleLightbox('.gallery a');
-    lightbox.refresh();
-    hideLoading();
+  galleryElement.insertAdjacentHTML('beforeend', cardsHtml.join(''));
+  lightbox.refresh();
+}
+
+export function clearGallery() {
+  const galleryElement = document.querySelector('.gallery');
+  galleryElement.innerHTML = '';
 }
 
 export function showLoading() {
@@ -38,11 +45,6 @@ export function hideLoading() {
   const loader = document.querySelector('.loader');
   loader.style.display = 'none';
 }
-
-const searchForm = document.getElementById('search-form');
-searchForm.addEventListener('submit', () => {
-  showLoading();
-});
 
 export function showError(message) {
   iziToast.error({
